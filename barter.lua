@@ -61,7 +61,7 @@ barter.chest.update_formspec = function(meta)
 end
 
 barter.chest.give_inventory = function(inv,list,playername)
-	player = minetest.env:get_player_by_name(playername)
+	player = minetest.get_player_by_name(playername)
 	if player then
 		for k,v in ipairs(inv:get_list(list)) do
 			player:get_inventory():add_item("main",v)
@@ -110,7 +110,7 @@ minetest.register_node("currency:barter", {
 	groups = {choppy=2,oddly_breakable_by_hand=2},
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		meta:set_string("infotext", "Barter Table")
 		meta:set_string("pl1","")
 		meta:set_string("pl2","")
@@ -120,7 +120,7 @@ minetest.register_node("currency:barter", {
 		inv:set_size("pl2", 3*4)
 	end,
 	on_receive_fields = function(pos, formname, fields, sender)
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		pl_receive_fields = function(n)
 			if fields[n.."_start"] and meta:get_string(n) == "" then
 				meta:set_string(n,sender:get_player_name())
@@ -147,18 +147,18 @@ minetest.register_node("currency:barter", {
 		barter.chest.update_formspec(meta)
 	end,
 	allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		if not barter.chest.check_privilege(from_list,player:get_player_name(),meta) then return 0 end
 		if not barter.chest.check_privilege(to_list,player:get_player_name(),meta) then return 0 end
 		return count
 	end,
 	allow_metadata_inventory_put = function(pos, listname, index, stack, player)
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		if not barter.chest.check_privilege(listname,player:get_player_name(),meta) then return 0 end
 		return stack:get_count()
 	end,
 	allow_metadata_inventory_take = function(pos, listname, index, stack, player)
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		if not barter.chest.check_privilege(listname,player:get_player_name(),meta) then return 0 end
 		return stack:get_count()
 	end,

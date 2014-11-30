@@ -53,7 +53,7 @@ end
 
 
 default.shop.give_inventory = function(inv,list,playername)
-	player = minetest.env:get_player_by_name(playername)
+	player = minetest.get_player_by_name(playername)
 	if player then
 		for k,v in ipairs(inv:get_list(list)) do
 			player:get_inventory():add_item("main",v)
@@ -94,7 +94,7 @@ minetest.register_node("currency:shop", {
 	sounds = default.node_sound_wood_defaults(),
 	after_place_node = function(pos, placer, itemstack)
 		local owner = placer:get_player_name()
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		meta:set_string("infotext", "Exchange shop (owned by "..owner..")")
 		meta:set_string("owner",owner)
 		--[[meta:set_string("pl1","")
@@ -109,7 +109,7 @@ minetest.register_node("currency:shop", {
 		clicker:get_inventory():set_size("customer_gives", 3*2)
 		clicker:get_inventory():set_size("customer_gets", 3*2)
 		default.shop.current_shop[clicker:get_player_name()] = pos
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		if clicker:get_player_name() == meta:get_string("owner") and not clicker:get_player_control().aux1 then
 			minetest.show_formspec(clicker:get_player_name(),"currency:shop_formspec",default.shop.formspec.owner(pos))
 		else
@@ -117,22 +117,22 @@ minetest.register_node("currency:shop", {
 		end
 	end,
 	allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		if player:get_player_name() ~= meta:get_string("owner") then return 0 end
 		return count
 	end,
 	allow_metadata_inventory_put = function(pos, listname, index, stack, player)
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		if player:get_player_name() ~= meta:get_string("owner") then return 0 end
 		return stack:get_count()
 	end,
 	allow_metadata_inventory_take = function(pos, listname, index, stack, player)
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		if player:get_player_name() ~= meta:get_string("owner") then return 0 end
 		return stack:get_count()
 	end,
 	can_dig = function(pos, player)
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		local inv = meta:get_inventory()
 		return inv:is_empty("stock") and inv:is_empty("customers_gave") and inv:is_empty("owner_wants") and inv:is_empty("owner_gives")
 	end
@@ -143,7 +143,7 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 	if formname == "currency:shop_formspec" and fields.exchange ~= nil and fields.exchange ~= "" then
 		local name = sender:get_player_name()
 		local pos = default.shop.current_shop[name]
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		if meta:get_string("owner") == name then
 			minetest.chat_send_player(name,"This is your own shop, you can't exchange to yourself !")
 		else
