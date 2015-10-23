@@ -8,7 +8,7 @@ function default.get_safe_formspec(pos)
 end
 
 local function has_safe_privilege(meta, player)
-	if player:get_player_name() ~= meta:get_string("owner") then
+	if not player or player:get_player_name() ~= meta:get_string("owner") then
 		return false
 	end
 	return true
