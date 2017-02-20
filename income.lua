@@ -15,7 +15,7 @@ minetest.register_globalstep(function(dtime)
                     players_income[name] = 0
                 end
                 players_income[name] = 1
-                minetest.log("info", S("[Currency] basic income for @1", name))
+                minetest.log("info", "[Currency] "..S("basic income for @1", name))
         end
     end
 end)
@@ -31,7 +31,7 @@ earn_income = function(player)
         local inv = player:get_inventory()
         inv:add_item("main", {name="currency:minegeld_5", count=count})
         players_income[name] = 0
-        minetest.log("info", S("[Currency] added basic income for @1 to inventory", name))
+        minetest.log("info", "[Currency] "..S("added basic income for @1 to inventory", name))
     end
 end
 

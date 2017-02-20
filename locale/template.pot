@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-11 21:23-0700\n"
+"POT-Creation-Date: 2017-02-20 13:58-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,11 +53,11 @@ msgid "Bundle of random Minegeld notes"
 msgstr ""
 
 #: income.lua:18
-msgid "[Currency] basic income for @1"
+msgid "basic income for @1"
 msgstr ""
 
 #: income.lua:34
-msgid "[Currency] added basic income for @1 to inventory"
+msgid "added basic income for @1 to inventory"
 msgstr ""
 
 #: init.lua:6
@@ -65,31 +65,31 @@ msgid "Currency mod loading..."
 msgstr ""
 
 #: init.lua:9
-msgid "[Currency] Craft_items Loaded!"
+msgid "Craft_items Loaded!"
 msgstr ""
 
 #: init.lua:11
-msgid "[Currency] Shop Loaded!"
+msgid "Shop Loaded!"
 msgstr ""
 
 #: init.lua:13
-msgid "[Currency] Barter Loaded!"
+msgid "Barter Loaded!"
 msgstr ""
 
 #: init.lua:15
-msgid "[Currency] Safe Loaded!"
+msgid "Safe Loaded!"
 msgstr ""
 
 #: init.lua:17
-msgid "[Currency] Crafting Loaded!"
+msgid "Crafting Loaded!"
 msgstr ""
 
 #: init.lua:20
-msgid "[Currency] Creative mode in use, skipping basic income."
+msgid "Creative mode in use, skipping basic income."
 msgstr ""
 
 #: init.lua:23
-msgid "[Currency] Income Loaded!"
+msgid "Income Loaded!"
 msgstr ""
 
 #: safe.lua:29
