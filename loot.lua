@@ -7,7 +7,7 @@ loot.register_loot({
 	payload = {
 		stack = ItemStack("currency:minegeld"),
 		min_size = 1,
-		max_size = 50,
+		max_size = 500,
 	},
 })
 
@@ -16,7 +16,7 @@ loot.register_loot({
 	payload = {
 		stack = ItemStack("currency:minegeld_5"),
 		min_size = 1,
-		max_size = 10,
+		max_size = 100,
 	},
 })
 
@@ -25,6 +25,6 @@ loot.register_loot({
 	payload = {
 		stack = ItemStack("currency:minegeld_10"),
 		min_size = 1,
-		max_size = 5,
+		max_size = 50,
 	},
 })
