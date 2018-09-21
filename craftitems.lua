@@ -5,21 +5,21 @@ local S, NS = dofile(MP.."/intllib.lua")
 minetest.register_craftitem("currency:minegeld_cent_5", {
     description = S("5 Minegeld cent coin"),
     inventory_image = "minegeld_cent_5.png",
-        stack_max = 30000,
+        stack_max = 1000,
 		groups = {minegeld = 1}
 })
 
 minetest.register_craftitem("currency:minegeld_cent_10", {
     description = S("10 Minegeld cent coin"),
     inventory_image = "minegeld_cent_10.png",
-        stack_max = 30000,
+        stack_max = 1000,
 		groups = {minegeld = 1}
 })
 
 minetest.register_craftitem("currency:minegeld_cent_25", {
     description = S("25 Minegeld cent coin"),
     inventory_image = "minegeld_cent_25.png",
-        stack_max = 30000,
+        stack_max = 1000,
 		groups = {minegeld = 1}
 })
 
