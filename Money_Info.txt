@@ -2,6 +2,9 @@ Minegeld
 ---------
 
 They have no recipe.
+
+In general, one Mg equals one US dollar, as of Sept. 2018.
+
 A good starting amount is about 250Mg on a server
 
 You currently get a basic income of 1 Minegeld per day, 
