@@ -29,7 +29,7 @@ earn_income = function(player)
     if players_income[name] > 0 then
         count = players_income[name]
         local inv = player:get_inventory()
-        inv:add_item("main", {name="currency:minegeld_5", count=count})
+        inv:add_item("main", {name="currency:minegeld_10", count=count})
         players_income[name] = 0
         minetest.log("info", "[Currency] "..S("added basic income for @1 to inventory", name))
     end

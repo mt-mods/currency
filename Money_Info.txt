@@ -7,7 +7,7 @@ In general, one Mg equals one US dollar, as of Sept. 2018.
 
 A good starting amount is about 250Mg on a server
 
-You currently get a basic income of 1 Minegeld per day, 
+You currently get a basic income of 10 Minegeld per day, 
 so long as you dig at least one node in that day 
 and have an empty inventory slot for the money to go in.
 
