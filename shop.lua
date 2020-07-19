@@ -305,20 +305,6 @@ minetest.register_node("currency:shop_empty", {
 	end
 })
 
-minetest.register_abm(
-	{
-		label = "shop stock check",
-		nodenames = {
-			"currency:shop",
-			"currency:shop_empty",
-		},
-		interval = 1,
-		chance = 256,
-		catch_up = false,
-		action = check_stock,
-	}
-)
-
 minetest.register_on_player_receive_fields(function(sender, formname, fields)
 	if formname == "currency:shop_formspec" and fields.exchange ~= nil and fields.exchange ~= "" then
 		local name = sender:get_player_name()
