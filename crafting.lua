@@ -1,27 +1,32 @@
-minetest.register_craft({
-	output = 'currency:safe',
-	recipe = {
-		{'default:steel_ingot', 'default:steel_ingot', 'default:steel_ingot'},
-		{'default:steel_ingot', 'default:mese_crystal', 'default:steel_ingot'},
-		{'default:steel_ingot', 'default:steel_ingot', 'default:steel_ingot'},
-	}
-})
+if minetest.get_modpath("default") then
+	minetest.register_craft({
+		output = "currency:safe",
+		recipe = {
+			{"default:steel_ingot", "default:steel_ingot",
+				"default:steel_ingot"},
+			{"default:steel_ingot", "default:mese_crystal",
+				"default:steel_ingot"},
+			{"default:steel_ingot", "default:steel_ingot",
+				"default:steel_ingot"},
+		}
+	})
 
-minetest.register_craft({
-	output = 'currency:shop',
-	recipe = {
-		{'default:sign_wall'},
-		{'default:chest_locked'},
-	}
-})
+	minetest.register_craft({
+		output = "currency:shop",
+		recipe = {
+			{"default:sign_wall"},
+			{"default:chest_locked"},
+		}
+	})
 
-minetest.register_craft({
-	output = 'currency:barter',
-	recipe = {
-		{'default:sign_wall'},
-		{'default:chest'},
-	}
-})
+	minetest.register_craft({
+		output = "currency:barter",
+		recipe = {
+			{"default:sign_wall"},
+			{"default:chest"},
+		}
+	})
+end
 
 minetest.register_craft({
 	type = "shapeless",
@@ -166,4 +171,3 @@ minetest.register_craft({
 	recipe = "currency:minegeld_bundle",
 	burntime = 1,
 })
-
