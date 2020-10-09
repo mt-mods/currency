@@ -140,7 +140,7 @@ local check_stock = function(
 				"Exchange shop (owned by @1)",
 				owner
 			) .. ", " .. S(
-				"out of stock!"
+				"out of stock"
 			)
 		)
 		local applicable = "currency:shop_empty"
