@@ -15,7 +15,7 @@ Exchange=Tausch
 ### craftitems.lua ###
 
 @1 Minegeld Note=@1 Minegeld Banknote
-@1 Minegeld cent coin=@1 Cent MünzeM
+@1 Minegeld cent coin=@1 Minegeld-Cent-Münze
 Bundle of random Minegeld notes=Bündel von verschiedenen Minegeld Banknoten
 
 ### safe.lua ###
@@ -33,6 +33,7 @@ Exchange can not be done, contact the shop owner.=Tausch kann nicht abgeschlosse
 Exchange shop (owned by @1)=Tauschgeschäft (gehört @1)
 Exchanged!=Getauscht!
 In exchange, you give:=Im Tausch, du gibst:
+out of stock=Ausverkauft
 Owner gives:=Inhaber gibt:
 Owner wants:=Inhaber will:
 
