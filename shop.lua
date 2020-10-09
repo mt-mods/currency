@@ -1,8 +1,12 @@
 local S = minetest.get_translator("currency")
 
-default.shop = {}
-default.shop.current_shop = {}
-default.shop.formspec = {
+currency.shop = {}
+if minetest.global_exists("default") then
+	default.shop = currency.shop
+end
+
+currency.shop.current_shop = {}
+currency.shop.formspec = {
 	customer = function(pos)
 		local list_name = "nodemeta:"..pos.x..','..pos.y..','..pos.z
 		local formspec = "size[8,9.5]"..
@@ -37,7 +41,7 @@ default.shop.formspec = {
 
 local have_pipeworks = minetest.global_exists("pipeworks")
 
-default.shop.check_privilege = function(listname,playername,meta)
+currency.shop.check_privilege = function(listname,playername,meta)
 	--[[if listname == "pl1" then
 		if playername ~= meta:get_string("pl1") then
 			return false
@@ -56,7 +60,7 @@ default.shop.check_privilege = function(listname,playername,meta)
 end
 
 
-default.shop.give_inventory = function(inv,list,playername)
+currency.shop.give_inventory = function(inv,list,playername)
 	player = minetest.get_player_by_name(playername)
 	if player then
 		for k,v in ipairs(inv:get_list(list)) do
@@ -66,18 +70,18 @@ default.shop.give_inventory = function(inv,list,playername)
 	end
 end
 
-default.shop.cancel = function(meta)
-	--[[default.shop.give_inventory(meta:get_inventory(),"pl1",meta:get_string("pl1"))
-	default.shop.give_inventory(meta:get_inventory(),"pl2",meta:get_string("pl2"))
+currency.shop.cancel = function(meta)
+	--[[currency.shop.give_inventory(meta:get_inventory(),"pl1",meta:get_string("pl1"))
+	currency.shop.give_inventory(meta:get_inventory(),"pl2",meta:get_string("pl2"))
 	meta:set_string("pl1","")
 	meta:set_string("pl2","")
 	meta:set_int("pl1step",0)
 	meta:set_int("pl2step",0)]]
 end
 
-default.shop.exchange = function(meta)
-	--[[default.shop.give_inventory(meta:get_inventory(),"pl1",meta:get_string("pl2"))
-	default.shop.give_inventory(meta:get_inventory(),"pl2",meta:get_string("pl1"))
+currency.shop.exchange = function(meta)
+	--[[currency.shop.give_inventory(meta:get_inventory(),"pl1",meta:get_string("pl2"))
+	currency.shop.give_inventory(meta:get_inventory(),"pl2",meta:get_string("pl1"))
 	meta:set_string("pl1","")
 	meta:set_string("pl2","")
 	meta:set_int("pl1step",0)
@@ -165,7 +169,7 @@ minetest.register_node("currency:shop", {
 			"shop_front.png"},
 	inventory_image = "shop_front.png",
 	groups = {choppy=2,oddly_breakable_by_hand=2,tubedevice=1,tubedevice_receiver=1},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = currency.node_sound_wood_defaults(),
 	after_place_node = function(pos, placer, itemstack)
 		local owner = placer:get_player_name()
 		local meta = minetest.get_meta(pos)
@@ -205,12 +209,12 @@ minetest.register_node("currency:shop", {
 	on_rightclick = function(pos, node, clicker, itemstack)
 		clicker:get_inventory():set_size("customer_gives", 3*2)
 		clicker:get_inventory():set_size("customer_gets", 3*2)
-		default.shop.current_shop[clicker:get_player_name()] = pos
+		currency.shop.current_shop[clicker:get_player_name()] = pos
 		local meta = minetest.get_meta(pos)
 		if clicker:get_player_name() == meta:get_string("owner") and not clicker:get_player_control().aux1 then
-			minetest.show_formspec(clicker:get_player_name(),"currency:shop_formspec",default.shop.formspec.owner(pos))
+			minetest.show_formspec(clicker:get_player_name(),"currency:shop_formspec",currency.shop.formspec.owner(pos))
 		else
-			minetest.show_formspec(clicker:get_player_name(),"currency:shop_formspec",default.shop.formspec.customer(pos))
+			minetest.show_formspec(clicker:get_player_name(),"currency:shop_formspec",currency.shop.formspec.customer(pos))
 		end
 	end,
 	allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
@@ -249,7 +253,7 @@ minetest.register_node("currency:shop_empty", {
 			"shop_front_empty.png"},
 	drop = "currency:shop",
 	groups = {choppy=2,oddly_breakable_by_hand=2,tubedevice=1,tubedevice_receiver=1,not_in_creative_inventory=1},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = currency.node_sound_wood_defaults(),
 	after_dig_node = (have_pipeworks and pipeworks and pipeworks.after_dig),
 	tube = {
 		insert_object = function(pos, node, stack, direction)
@@ -272,12 +276,12 @@ minetest.register_node("currency:shop_empty", {
 	on_rightclick = function(pos, node, clicker, itemstack)
 		clicker:get_inventory():set_size("customer_gives", 3*2)
 		clicker:get_inventory():set_size("customer_gets", 3*2)
-		default.shop.current_shop[clicker:get_player_name()] = pos
+		currency.shop.current_shop[clicker:get_player_name()] = pos
 		local meta = minetest.get_meta(pos)
 		if clicker:get_player_name() == meta:get_string("owner") and not clicker:get_player_control().aux1 then
-			minetest.show_formspec(clicker:get_player_name(),"currency:shop_formspec",default.shop.formspec.owner(pos))
+			minetest.show_formspec(clicker:get_player_name(),"currency:shop_formspec",currency.shop.formspec.owner(pos))
 		else
-			minetest.show_formspec(clicker:get_player_name(),"currency:shop_formspec",default.shop.formspec.customer(pos))
+			minetest.show_formspec(clicker:get_player_name(),"currency:shop_formspec",currency.shop.formspec.customer(pos))
 		end
 	end,
 	allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
@@ -308,7 +312,7 @@ minetest.register_node("currency:shop_empty", {
 minetest.register_on_player_receive_fields(function(sender, formname, fields)
 	if formname == "currency:shop_formspec" and fields.exchange ~= nil and fields.exchange ~= "" then
 		local name = sender:get_player_name()
-		local pos = default.shop.current_shop[name]
+		local pos = currency.shop.current_shop[name]
 		local meta = minetest.get_meta(pos)
 		if meta:get_string("owner") == name then
 			minetest.chat_send_player(name, S("This is your own shop, you can't exchange to yourself!"))
@@ -362,4 +366,3 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 		end
 	end
 end)
-
