@@ -154,15 +154,15 @@ minetest.register_craft({
 	type = "shapeless",
 	output = "currency:minegeld_bundle",
 	recipe = {
-		"group:minegeld",
-		"group:minegeld",
-		"group:minegeld",
-		"group:minegeld",
-		"group:minegeld",
-		"group:minegeld",
-		"group:minegeld",
-		"group:minegeld",
-		"group:minegeld"
+		"group:minegeld_note",
+		"group:minegeld_note",
+		"group:minegeld_note",
+		"group:minegeld_note",
+		"group:minegeld_note",
+		"group:minegeld_note",
+		"group:minegeld_note",
+		"group:minegeld_note",
+		"group:minegeld_note"
 	},
 })
 
