@@ -344,13 +344,14 @@ minetest.register_on_player_receive_fields(function(sender, formname, fields)
 				end
 			end
 			if can_exchange then
+				local it
 				for i, item in pairs(wants) do
-					pinv:remove_item("customer_gives",item)
-					minv:add_item("customers_gave",item)
+					it = pinv:remove_item("customer_gives",item)
+					minv:add_item("customers_gave",it)
 				end
 				for i, item in pairs(gives) do
-					minv:remove_item("stock",item)
-					pinv:add_item("customer_gets",item)
+					it = minv:remove_item("stock",item)
+					pinv:add_item("customer_gets",it)
 				end
 				minetest.chat_send_player(name, S("Exchanged!"))
 				check_stock(
