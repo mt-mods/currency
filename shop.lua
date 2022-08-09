@@ -61,7 +61,7 @@ end
 
 
 currency.shop.give_inventory = function(inv,list,playername)
-	player = minetest.get_player_by_name(playername)
+	local player = minetest.get_player_by_name(playername)
 	if player then
 		for k,v in ipairs(inv:get_list(list)) do
 			player:get_inventory():add_item("main",v)
@@ -238,7 +238,10 @@ minetest.register_node("currency:shop", {
 	can_dig = function(pos, player)
 		local meta = minetest.get_meta(pos)
 		local inv = meta:get_inventory()
-		return inv:is_empty("stock") and inv:is_empty("customers_gave") and inv:is_empty("owner_wants") and inv:is_empty("owner_gives")
+		return inv:is_empty("stock") and
+			inv:is_empty("customers_gave") and
+			inv:is_empty("owner_wants") and
+			inv:is_empty("owner_gives")
 	end
 })
 
@@ -305,7 +308,10 @@ minetest.register_node("currency:shop_empty", {
 	can_dig = function(pos, player)
 		local meta = minetest.get_meta(pos)
 		local inv = meta:get_inventory()
-		return inv:is_empty("stock") and inv:is_empty("customers_gave") and inv:is_empty("owner_wants") and inv:is_empty("owner_gives")
+		return inv:is_empty("stock") and
+			inv:is_empty("customers_gave") and
+			inv:is_empty("owner_wants") and
+			inv:is_empty("owner_gives")
 	end
 })
 

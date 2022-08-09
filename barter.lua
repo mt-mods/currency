@@ -47,8 +47,8 @@ barter.chest.check_privilege = function(listname,playername,meta)
 end
 
 barter.chest.update_formspec = function(meta)
-	formspec = barter.chest.formspec.main
-	pl_formspec = function (n)
+	local formspec = barter.chest.formspec.main
+	local pl_formspec = function (n)
 		if meta:get_int(n.."step")==0 then
 			formspec = formspec .. barter.chest.formspec[n].start
 		else
@@ -65,9 +65,9 @@ barter.chest.update_formspec = function(meta)
 end
 
 barter.chest.give_inventory = function(inv,list,playername)
-	player = minetest.get_player_by_name(playername)
+	local player = minetest.get_player_by_name(playername)
 	if player then
-		for k,v in ipairs(inv:get_list(list)) do
+		for _,v in ipairs(inv:get_list(list)) do
 			if player:get_inventory():room_for_item("main",v) then
 				player:get_inventory():add_item("main",v)
 			else
@@ -144,7 +144,7 @@ minetest.register_node("currency:barter", {
 	on_receive_fields = function(pos, formname, fields, sender)
 		local meta = minetest.get_meta(pos)
 		barter.chest.start_timer(pos, meta)
-		pl_receive_fields = function(n)
+		local pl_receive_fields = function(n)
 			if fields[n.."_start"] and meta:get_string(n) == "" then
 				meta:set_string(n,sender:get_player_name())
 			end
