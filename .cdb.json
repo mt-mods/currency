@@ -1,0 +1,19 @@
+{
+	"type": "MOD",
+	"title": "Currency",
+	"name": "currency",
+	"short_description": "Provides shops, barter tables, safes, and multiple denominations of currency, called \"Minegeld\".",
+	"dev_state": "MAINTENANCE_ONLY",
+	"ai_disclosure": "NONE",
+	"tags": ["multiplayer", "commerce"],
+	"content_warnings": null,
+	"license": "LGPL-3.0-only",
+	"media_license": "CC-BY-SA-4.0",
+	"repo": "https://github.com/mt-mods/currency",
+	"website": null,
+	"issue_tracker": "https://github.com/mt-mods/currency/issues",
+	"forums": 21339,
+	"video_url": null,
+	"donate_url": null,
+	"translation_url": null
+}
